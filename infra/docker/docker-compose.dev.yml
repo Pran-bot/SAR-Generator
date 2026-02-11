@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  spring-app:
+    image: spring-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+
+    volumes:
+      - .:/app   # Mount source code
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
