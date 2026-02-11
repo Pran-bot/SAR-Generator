@@ -1,17 +1,30 @@
-version: "3.9"
+version: "3.8"
 
 services:
-  spring-app:
-    image: spring-dev
+
+  main_service:
+    image: main_service
     build:
-      context: .
-      dockerfile: Dockerfile.dev
+      context: ../../backend/main_service
+      dockerfile: ../../backend/main_service/Dockerfile.dev
 
     volumes:
-      - .:/app   # Mount source code
+      - ../../backend/main_service/:/app   # Mount source code
 
     ports:
       - "8080:8080"
 
-    environment:
-      SPRING_PROFILES_ACTIVE: dev
+    # environment:
+    #   SPRING_PROFILES_ACTIVE: dev
+
+  python_ai:
+    image: python_ai
+    build:  ../../backend/python_ai/
+    env_file:
+      - ../../backend/python_ai/.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../../backend/python_ai/:/code/app/
+      - /code/app/venv
+

@@ -1,4 +1,31 @@
-SAR-GENERATOR
+SAR_Generator
+
+1. create postgress database  and name it SAR_Generator
+
+
+2. go to backend/main_service/main/java/com/SAR_Generator/resources/application.properties
+```
+spring.application.name=main_service
+# PostgreSQL database configuration
+# $env:DB_URL="jdbc:postgresql://localhost:5432/SAR_Generator"
+
+spring.datasource.url=${DB_URL}
+spring.datasource.username=postgres
+spring.datasource.password=1234
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# JPA configurations
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.session.jdbc.initialize-schema=always
+
+```
+
+
+3. start all service 
+```
+docker compose -f infra/docker/docker-compose.dev.yml up
+```
 ```
 SAR-GENERATOR/
 │
