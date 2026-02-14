@@ -23,8 +23,11 @@ SAR-Generator\backend\python_ai
 create .env
 ```
 
-5. create postgress database  and name it SAR_Generator
+5. install Flyway CLI or desktop 
 
+6. Configure Flyway
+add  flyway.user.toml to SAR-Generator\infra\database\SAR-Generator
+```
 
 6. go to backend/main_service/main/java/com/SAR_Generator/resources/application.properties
 ```
