@@ -45,7 +45,6 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.session.jdbc.initialize-schema=always
 
-```
 
 7. start all service 
 ```
