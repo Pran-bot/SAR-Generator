@@ -121,6 +121,7 @@ build/
 .vscode/
 
 # Flyway ignores
+
 *.user.toml
 *.artifact
 report.html
