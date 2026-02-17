@@ -20,4 +20,10 @@ public class BankAlertServiceImple implements BankAlertService{
         System.out.println("sending data to kafka");
         kafkaProducerService.send(data);
     }
+
+    @Override
+    public void saveCases(String data){
+        
+        
+    }
 }
