@@ -1,3 +1,4 @@
+import asyncio
 from fastapi import FastAPI
 from routes import health
 from routes import riskscore_route
@@ -10,25 +11,43 @@ from database import connect_to_db, close_db_connection
 from services.kafka_consumer import start_consumer
 from routes.ai_route import sar_router
 
+# @asynccontextmanager
+# async def lifespan(app: FastAPI):
+#     print("trying to connect to database...")
+#     await connect_to_db()
+#     print("✅ Database connected")
+
+
+#     thread = threading.Thread(
+#         target=start_consumer,
+#         daemon=True
+#     )
+#     thread.start()
+
+#     yield   # App runs here
+
+#     await close_db_connection()
+
+
+#     print("App shutting down...")
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print("trying to connect to database...")
+
     await connect_to_db()
-    print("✅ Database connected")
 
+    # ✅ Start consumer properly
+    app.state.consumer_task = asyncio.create_task(start_consumer())
 
-    thread = threading.Thread(
-        target=start_consumer,
-        daemon=True
-    )
-    thread.start()
+    print("✅ App started")
 
-    yield   # App runs here
+    yield
 
-    # await close_db_connection()
+    # Shutdown
+    app.state.consumer_task.cancel()
+    await close_db_connection()
 
-
-    print("App shutting down...")
+    print("🛑 App shutting down")
 
 
 app = FastAPI(

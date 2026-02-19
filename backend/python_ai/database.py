@@ -17,7 +17,12 @@ async def connect_to_db():
     """
     Create asyncpg pool using Supabase Transaction Pooler.
     """
+
+
     global pool
+    if pool:
+        print("⚠️ Pool already exists")
+        return
     print("✅Creating pool created ")
 
 

@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from services.riskscore_service import calculate_risk
 from services.evidence_generator import generate_evidence
-
+from models.create_case_analysis import create_case_analysis
 pipeline_router = APIRouter()
 
 # Adjustable threshold
@@ -38,4 +38,11 @@ async def risk_pipeline(case_data: dict):
         response["evidence_generated"] = True
         response["evidence"] = evidence
 
+    # try:
+    #     await create_case_analysis(response)
+    # except Exception as e:
+    #     print("⚠️ Failed to save in db", flush=True)
+    #     print(e, flush=True)
+    
+    print(response, flush=True)
     return response

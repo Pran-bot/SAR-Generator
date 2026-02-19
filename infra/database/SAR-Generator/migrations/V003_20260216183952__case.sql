@@ -1,7 +1,7 @@
 CREATE TABLE cases (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
-    case_id VARCHAR(100) UNIQUE NOT NULL,
+    case_id UUID UNIQUE NOT NULL,
     generated_at TIMESTAMPTZ NOT NULL,
     institution VARCHAR(255) NOT NULL,
 
@@ -14,7 +14,7 @@ CREATE INDEX idx_cases_case_id ON cases(case_id);
 CREATE TABLE customer_kyc (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
-    case_id UUID REFERENCES cases(id) ON DELETE CASCADE,
+    case_id UUID REFERENCES cases(case_id) ON DELETE CASCADE,
 
     customer_id VARCHAR(100) NOT NULL,
     full_name VARCHAR(255),
@@ -35,7 +35,7 @@ CREATE INDEX idx_customer_risk ON customer_kyc(risk_category);
 CREATE TABLE account_profiles (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
-    case_id UUID REFERENCES cases(id) ON DELETE CASCADE,
+    case_id UUID REFERENCES cases(case_id) ON DELETE CASCADE,
 
     account_number VARCHAR(50),
     account_type VARCHAR(50),
@@ -52,7 +52,7 @@ CREATE TABLE account_profiles (
 CREATE TABLE alerts (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
-    case_id UUID REFERENCES cases(id) ON DELETE CASCADE,
+    case_id UUID REFERENCES cases(case_id) ON DELETE CASCADE,
 
     alert_id VARCHAR(100),
     type VARCHAR(255),
@@ -68,7 +68,7 @@ CREATE INDEX idx_alert_severity ON alerts(severity);
 CREATE TABLE transactions (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
-    case_id UUID REFERENCES cases(id) ON DELETE CASCADE,
+    case_id UUID REFERENCES cases(case_id) ON DELETE CASCADE,
 
     tx_id VARCHAR(50),
     timestamp TIMESTAMPTZ NOT NULL,

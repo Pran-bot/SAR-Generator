@@ -78,7 +78,7 @@ public class BankController {
     public ResponseEntity<String> dataEndPoint(@RequestBody CaseFullRequestDTO request) {
 
         // save to db
-        // caseService.saveFullCase(request);
+        caseService.saveFullCase(request);
 
         String json;
         try {

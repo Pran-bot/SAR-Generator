@@ -1,12 +1,12 @@
 CREATE TABLE sar_reports (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
-    case_id VARCHAR(100) REFERENCES cases(case_id) ON DELETE CASCADE,
+    case_id UUID UNIQUE,
     analysis_id UUID REFERENCES case_analysis(id) ON DELETE CASCADE,
 
-    sar_number VARCHAR(100) UNIQUE NOT NULL,
+    sar_number VARCHAR(100)  NOT NULL, -- put case_id for now
 
-    sar_summary TEXT NOT NULL,
+    sar_summary TEXT NOT NULL, 
     narrative TEXT NOT NULL,
     transaction_analysis TEXT,
     recommended_action TEXT,
@@ -25,7 +25,7 @@ CREATE TABLE sar_subjects (
 
     customer_id VARCHAR(50) NOT NULL,
     full_name VARCHAR(150) NOT NULL,
-    dob DATE,
+    dob VARCHAR(100),
     pan VARCHAR(20),
     aadhaar_last4 VARCHAR(4),
 

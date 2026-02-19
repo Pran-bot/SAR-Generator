@@ -1,7 +1,7 @@
 CREATE TABLE case_analysis (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
-    case_id UUID UNIQUE REFERENCES cases(id) ON DELETE CASCADE,
+    case_id UUID UNIQUE ,
 
     status VARCHAR(50) NOT NULL,  -- success / failed
 

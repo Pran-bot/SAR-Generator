@@ -133,12 +133,12 @@
 
 
 {
-  "case_id": "CASE_2026_00147",
+  "case_id": "d2108626-493b-4590-a16a-2b86a42b22d0",
   "generated_at": "2026-02-11T12:30:00Z",
   "institution": "Demo National Bank",
 
   "customer_kyc": {
-    "customer_id": "CUST552299",
+    "customer_id": "d2108626-493b-4590-a16a-2b86a42b22d0",
     "full_name": "Sanjay Kumar",
     "dob": "2000-01-14",
     "pan": "AAZPK5522T",
@@ -240,7 +240,7 @@
 
 
 {
-  "case_id": "CASE_2026_00145",
+  "case_id": "e6a58469-2c0d-4447-a5c8-a1451a6ecd66",
   "generated_at": "2026-02-11T12:05:00Z",
   "institution": "Demo National Bank",
 
@@ -302,7 +302,7 @@
 
 
 {
-  "case_id": "CASE_2026_00145",
+  "case_id": "e6a58469-2c0d-4447-a5c8-a1451a6ecd66",
   "generated_at": "2026-02-11T12:05:00Z",
   "institution": "Demo National Bank",
 
